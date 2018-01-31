@@ -6,15 +6,15 @@ class Solution {
         backtrack(ans, new LinkedList<>(), s);
         return ans;
     }
-    public void backtrack(List<List<String>> list, List<String> temp, String s) {
+    public void backtrack(List<List<String>> list, List<String> currPartition, String s) {
         if(s.length() == 0) {
-            list.add(new LinkedList<>(temp));
+            list.add(new LinkedList<>(currPartition));
         }else {
             for(int i = 1; i <= s.length(); i++) {
                 if(isPalindrome(s.substring(0, i))) {
-                    temp.add(s.substring(0, i));
-                    backtrack(list, temp, s.substring(i, s.length()));
-                    temp.remove(temp.size() - 1);
+                    currPartition.add(s.substring(0, i));
+                    backtrack(list, currPartition, s.substring(i, s.length()));
+                    currPartition.remove(currPartition.size() - 1);
                 }
             }
         }
