@@ -5,7 +5,7 @@ class Solution {
         return res;
     }
 
-    public void backtrack(List<List<String>> res, LinkedList<Integer> curr, int n, boolean[] colTest, boolean[] diagTest1, boolean[] diagTest2) {
+    private void backtrack(List<List<String>> res, LinkedList<Integer> curr, int n, boolean[] colTest, boolean[] diagTest1, boolean[] diagTest2) {
         if (curr.size() == n) {
             List<String> temp = new LinkedList<>();
             for (int i = 0; i < n; i++) {
@@ -19,7 +19,7 @@ class Solution {
         }
         int row = curr.size();
         for (int col = 0; col < n; col++) {
-            int id1 = row - col + n - 1, id2 = 2 * n - row - col - 2;
+            int id1 = row - col + n - 1, id2 = row + col;
             if (!colTest[col] && !diagTest1[id1] && !diagTest2[id2]) {
                 curr.add(col);
                 colTest[col] = true;
